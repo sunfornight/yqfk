@@ -1,0 +1,41 @@
+<!-- 头部 -->
+<view class="header">
+  <view class="container hdcon">
+    <navigator open-type="switchTab" url="/pages/index/index">
+      <image mode="heightFix" src="/images/daikouzhao.png"></image>
+    </navigator>
+    <view class="kefu">
+      <button class="btn" open-type="contact"></button>
+      <image  mode="heightFix" src="/images/jiayou.png"></image>
+    </view>
+  </view>
+</view>
+
+<van-notice-bar
+  scrollable="{{ true }}"
+  background= "#ffee6f"
+  text="抗击疫情，共克时艰。    万众一心，坚决打赢疫情防控狙击战。     少出门，少聚集，勤洗手，勤通风。"
+/>
+
+<view class="dynamic">
+  <view class="container">
+
+    <view class="dyMain" wx:for="{{tuisongList}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+    <navigator url="../tuisong/tuisong?tuisongtitle={{item.tuisongtitle}}&tuisongauthor={{item.tuisongauthor}}&tuisongdate={{item.tuisongdate}}&tuisongintroduction={{item.tuisongintroduction}}&tuisongarticle={{item.tuisongarticle}}&picbase64={{item.picbase64}}" class="dyItem">
+        <view class="pic">
+          <image src="{{item.picbase64}}"></image>
+        </view>
+        <view class="txt">
+          <view class="title">
+            {{item.tuisongtitle}}
+          </view>
+          <view class="info">
+            <text>作者：</text>{{item.tuisongauthor}}<text space="ensp">  -  </text><text>时间：</text>{{item.tuisongdate}}
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+
+

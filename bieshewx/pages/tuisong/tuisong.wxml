@@ -1,0 +1,29 @@
+<!--pages/tuisong/tuisong.wxml-->
+
+<van-notice-bar
+  scrollable="{{ true }}"
+  background= "#ffee6f"
+  text="抗击疫情，共克时艰。    万众一心，坚决打赢疫情防控狙击战。     少出门，少聚集，勤洗手，勤通风。"
+/>
+<view class="weui-article">
+  <view aria-role="heading" aria-level="4" class="weui-article__h1">{{tuisongtitle}}</view>
+  <view class="weui-article__section">
+    <view class="weui-article__h3">作者：{{tuisongauthor}}</view>
+    <view class="weui-article__section">
+      <view class="weui-article__h4">时间：{{tuisongdate}}</view>
+      <view class="weui-article__p">{{tuisongintroduction}}</view>
+      <view class="weui-article__p">
+        <image class="weui-article__img" src="{{picbase64}}" mode="aspectFit" style="height: 180px;" />
+      </view>
+      <view class="weui-article__p">{{tuisongarticle}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- footer -->
+<view class="weui-footer">
+  <view class="weui-footer__links">
+    <navigator class="weui-footer__link weui-wa-hotarea" url="../tuisongList/tuisongList">观看更多</navigator>
+  </view>
+  <view class="weui-footer__text">Copyright &copy; 2021-2022 LuoJie</view>
+</view>

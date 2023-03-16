@@ -1,0 +1,6 @@
+.header{width: 750rpx;height: 90rpx;background-color: #ffee6f}
+.hdcon{display: flex; justify-content: space-between;height: 100%;padding: 0 26rpx;}
+.hdcon navigator, .hdcon .kefu{height: 50rpx;}
+.kefu{position: relative;animation: dh 2s infinite linear alternate;}
+.kefu .btn{position: absolute;width: 100%;height: 170%;top: 0;left: 0;opacity: 0;}
+.hdcon image{height: 170%;}

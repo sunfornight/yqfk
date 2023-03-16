@@ -1,0 +1,23 @@
+/* pages/tuisongList/tuisongList.wxss */
+page{
+  background-color: #ffee6f;
+}
+
+.header{width: 750rpx;height: 90rpx;background-color: #ffee6f}
+.hdcon{display: flex; justify-content: space-between;height: 100%;}
+.hdcon navigator, .hdcon .kefu{height: 50rpx;}
+.kefu{position: relative;animation: dh 2s infinite linear alternate;}
+.kefu .btn{position: absolute;width: 100%;height: 170%;top: 0;left: 0;opacity: 0;}
+.hdcon image{height: 170%;}
+
+.dynamic{
+  padding:10rpx 0 70rpx;
+  width: 100%;
+}
+.dyItem{display: flex; padding: 15rpx 0;border: 5rpx dashed #ffee6f;background-color: white;}
+.dyItem .pic{width: 230rpx;height: 150rpx;}
+.dyItem .pic image{width: 100%;height: 100%;}
+.dyItem .txt{width: 440rpx;display: flex;flex-direction: column;justify-content: space-between;}
+.dyItem .title{font-size: 34rpx;}
+.dyItem .info{font-size: 22rpx;color: #888;}
+.dyItem .info text{font-size: 20rpx;}

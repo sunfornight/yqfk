@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.LunbotuDao">
+    <select id="getAllPics" resultType="com.biyesheji.bishe.bean.Lunbotu">
+        SELECT * FROM lunbotu
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+    <select id="getPicsCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM lunbotu
+    </select>
+
+    <select id="getShownPics" resultType="com.biyesheji.bishe.bean.Lunbotu">
+        SELECT * FROM lunbotu
+        WHERE state = 1
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getShownPicsCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM lunbotu
+        WHERE state = 1
+    </select>
+
+    <update id="updateState">
+       UPDATE lunbotu SET state = #{state} WHERE id = #{id}
+    </update>
+    <insert id="addPics">
+        INSERT INTO lunbotu
+        (picdescribe,picbase64)
+        VALUE
+        (#{picdescribe},#{picbase64})
+    </insert>
+    <delete id="deletePics">
+        DELETE FROM lunbotu WHERE id = #{id}
+    </delete>
+
+
+    <select id="getWxLunbotu" resultType="com.biyesheji.bishe.bean.Lunbotu">
+        SELECT * FROM lunbotu
+        WHERE state = 1
+    </select>
+</mapper>

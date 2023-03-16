@@ -1,0 +1,11 @@
+<view class="header">
+  <view class="container hdcon">
+    <navigator open-type="switchTab" url="/pages/index/index">
+      <image mode="heightFix" src="/images/daikouzhao.png"></image>
+    </navigator>
+    <view class="kefu">
+      <button class="btn" open-type="contact"></button>
+      <image  mode="heightFix" src="/images/jiayou.png"></image>
+    </view>
+  </view>
+</view>

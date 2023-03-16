@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.DakaDao">
+    <insert id="addDaka">
+        INSERT INTO daka
+        (name,address,date,healthstate,isalert, iscontact,isfever, isoutside,region,sex,telephone,temp,rate)
+        VALUE
+        (#{name},#{address},#{date},#{healthstate},#{isalert},#{iscontact},#{isfever},#{isoutside},#{region},#{sex},#{telephone},#{temp},#{rate})
+    </insert>
+
+    <select id="getAllDaka" resultType="com.biyesheji.bishe.bean.Daka">
+        SELECT * FROM daka
+        <if test="name !=null">
+            WHERE name like #{name}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getDakaCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM daka
+        <if test="name !=null">
+            WHERE name like #{name}
+        </if>
+    </select>
+
+    <update id="updateRate">
+       UPDATE daka SET rate = #{rate} WHERE id = #{id}
+    </update>
+
+    <select id="getWxAllDaka" resultType="com.biyesheji.bishe.bean.Daka">
+        SELECT * FROM daka WHERE name = #{name}
+    </select>
+
+    <select id="getWxIdDaka" resultType="com.biyesheji.bishe.bean.Daka">
+        SELECT * FROM daka WHERE id = #{id}
+    </select>
+
+</mapper>

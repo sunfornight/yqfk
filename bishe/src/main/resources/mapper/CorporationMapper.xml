@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.CorporationDao">
+    <select id="getAllCorporation" resultType="com.biyesheji.bishe.bean.Corporation">
+        SELECT * FROM corporation
+        <if test="corporationname !=null">
+            WHERE corporationname like #{corporationname}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+    <select id="getCorporationCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM corporation
+        <if test="corporationname !=null">
+            WHERE corporationname like #{corporationname}
+        </if>
+    </select>
+    <update id="updateVisitState">
+       UPDATE corporation SET isvisit = #{state} WHERE corporationid = #{id}
+    </update>
+    <update id="updateBiddingState">
+       UPDATE corporation SET corporationbidding = #{state} WHERE corporationid = #{id}
+    </update>
+    <insert id="addCorporation">
+        INSERT INTO corporation
+        (corporationname,corporationlocation,corporationaddress,corporationactualpayment,corporationregister,corporationsocialsecuritynumber,corporationgxdqdate,corporationrqdqdate,corporationISO9001,corporationISO20000,corporationISO27000,corporationfivestar,corporationcombination,corporationjitc,corporationsupplement1,corporationsupplement2,corporationwebsite,corporationapplet,corporationcertification,corporation3C,corporationelse)
+        VALUE
+        (#{corporationname},#{corporationlocation},#{corporationaddress},#{corporationactualpayment},#{corporationregister},#{corporationsocialsecuritynumber},#{corporationgxdqdate},#{corporationrqdqdate},#{corporationISO9001},#{corporationISO20000},#{corporationISO27000},#{corporationfivestar},#{corporationcombination},#{corporationjitc},#{corporationsupplement1},#{corporationsupplement2},#{corporationwebsite},#{corporationapplet},#{corporationcertification},#{corporation3C},#{corporationelse})
+    </insert>
+    <select id="getUpdateCorporation" resultType="com.biyesheji.bishe.bean.Corporation">
+        SELECT * FROM corporation WHERE corporationid = #{id}
+    </select>
+    <delete id="deleteCorporation">
+        DELETE FROM corporation WHERE corporationid = #{id}
+    </delete>
+    <update id="editCorporation">
+        UPDATE corporation SET corporationname = #{corporationname} ,
+        corporationlocation = #{corporationlocation} , corporationaddress = #{corporationaddress} ,
+        corporationactualpayment = #{corporationactualpayment} ,corporationregister = #{corporationregister} ,
+        corporationsocialsecuritynumber = #{corporationsocialsecuritynumber} ,
+        corporationgxdqdate = #{corporationgxdqdate} ,corporationcertification=#{corporationcertification},corporationrqdqdate = #{corporationrqdqdate} ,
+        corporationISO9001 = #{corporationISO9001} ,corporationISO20000 = #{corporationISO20000} ,
+        corporationISO27000 = #{corporationISO27000} ,corporationfivestar = #{corporationfivestar} ,
+        corporationcombination = #{corporationcombination} ,corporationjitc = #{corporationjitc} ,
+        corporationwebsite = #{corporationwebsite} ,corporationapplet = #{corporationapplet} ,
+        corporationsupplement1 = #{corporationsupplement1},corporationsupplement2 = #{corporationsupplement2},
+        corporation3C = #{corporation3C},corporationelse = #{corporationelse}
+        WHERE corporationid = #{corporationid}
+    </update>
+    <select id="getClientList" resultType="com.biyesheji.bishe.bean.Client">
+        SELECT * FROM client WHERE corporationname = #{corporationname}
+    </select>
+</mapper>

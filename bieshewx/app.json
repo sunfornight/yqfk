@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/churushenqing/churushenqing",
+    "pages/login/login", 
+    "pages/recentlyerweima/recentlyerweima",
+    "pages/churutest/churutest",
+    "pages/churushenpi/churushenpi",
+    "pages/dakarecord/dakarecord",
+    "pages/daka/daka",
+    "pages/dakarate/dakarate",
+    "pages/mapdetail/mapdetail",
+    "pages/map/map",
+    "pages/wode/wode",
+    "pages/carts/carts",
+    "pages/orders/orders",
+    "pages/gouwuche/gouwuche",
+    "pages/tuisongList/tuisongList",
+    "pages/tuisong/tuisong",
+    "pages/logs/logs",
+    "pages/shangpindetail/shangpindetail",
+    "pages/address/address",
+    "pages/testform/testform"
+    
+  ],
+  "window": {
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffee6f",
+    "navigationBarTitleText": "疫情防控平台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#black",
+    "selectedColor": "#5976ba",
+    "backgroundColor": "#ffee6f",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tabbar/zhuye.png",
+        "selectedIconPath": "/images/tabbar/selected.png"
+      },
+      {
+        "pagePath": "pages/carts/carts",
+        "text": "购物车",
+        "iconPath": "/images/tabbar/shangpin.png",
+        "selectedIconPath": "/images/tabbar/selected.png"
+      },
+      {
+        "pagePath": "pages/daka/daka",
+        "text": "健康打卡",
+        "iconPath": "/images/tabbar/zhuye.png",
+        "selectedIconPath": "/images/tabbar/selected.png"
+      },
+      {
+        "pagePath": "pages/wode/wode",
+        "text": "我的",
+        "iconPath": "/images/tabbar/wode.png",
+        "selectedIconPath": "/images/tabbar/selected.png"
+      }
+    ]
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.9",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "usingComponents": {
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

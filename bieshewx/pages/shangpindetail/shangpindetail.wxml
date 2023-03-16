@@ -1,0 +1,32 @@
+<HdView></HdView><view class="main">
+    <view class="goods-box">
+        <image src="{{goodsimage}}" class="goods-thumb"></image>
+        
+        <navigator open-type="switchTab" url="/pages/carts/carts" open-type='switchTab'>
+            <view class="carts-icon {{scaleCart?'on':''}}">
+                <image src="/images/gouwuche.png"></image>
+                <text class="carts-icon-num" wx:if="{{hasCarts}}">{{totalNum}}</text>
+            </view>
+        </navigator>
+        
+        <view class="goods-operation">
+            <text class="goods-operation-num">已点  {{totalNum}}</text>
+            <text class="goods-to-cart" bindtap="addToCart">加入购物车</text>
+            <image src="/images/gouwuche2.png"  class="goods-cart-img" bindtap="addToCart"></image>
+        </view>
+        <image wx:if="{{show}}" src="/image/cart1.png" class="to-carts-icon"></image>
+        <view class="goods-stock">余货：{{goodsamount}}</view>
+        <view class="goods-title">{{goodsname}}</view>
+        <view class="goods-price">￥ {{goodsprice}}{{goodsunit}}</view>
+    </view>
+    <view class="goods-tab-box">
+        <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">商品用效</view>
+        <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">厂家信息</view>
+        <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">生产日期</view>
+        <view class="goods-content">
+            <view wx:if="{{curIndex === 0}}">{{goodsusage}}</view>
+            <view wx:if="{{curIndex === 1}}">{{goodschandi}}</view>
+            <view wx:if="{{curIndex === 2}}">{{shengyubaozhiqi}}</view>
+        </view>
+    </view>
+</view>

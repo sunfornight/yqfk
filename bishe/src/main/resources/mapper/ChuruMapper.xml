@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.ChuruDao">
+    <insert id="addChuru">
+        INSERT INTO churu
+        (name,address,destination,timestart,timeend,isleave,telephone,temp,note,approve)
+        VALUE
+        (#{name},#{address},#{destination},#{timestart},#{timeend},#{isleave},#{telephone},#{temp},#{note},#{approve})
+    </insert>
+
+    <select id="getAllChuru" resultType="com.biyesheji.bishe.bean.Churu">
+        SELECT * FROM churu
+        <if test="name !=null">
+            WHERE name like #{name}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getChuruCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM churu
+        <if test="name !=null">
+            WHERE name like #{name}
+        </if>
+    </select>
+
+    <update id="updateApprove">
+       UPDATE churu SET approve = #{approve} WHERE id = #{id}
+    </update>
+
+    <select id="getWxAllChuru" resultType="com.biyesheji.bishe.bean.Churu">
+        SELECT * FROM churu WHERE name = #{name}
+    </select>
+
+
+
+</mapper>

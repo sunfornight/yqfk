@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.GoodDao">
+    <select id="getAllGoods" resultType="com.biyesheji.bishe.bean.ProtectionGoods">
+        SELECT * FROM protectiongoods
+        <if test="goodsname !=null">
+        WHERE goodsname like #{goodsname}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getGoodsCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM protectiongoods
+        <if test="goodsname !=null">
+            WHERE goodsname like #{goodsname}
+        </if>
+    </select>
+
+    <update id="updateState">
+       UPDATE protectiongoods SET state = #{state} WHERE id = #{id}
+    </update>
+
+    <update id="updateAmount">
+       UPDATE protectiongoods SET amount = #{amount} WHERE id = #{id}
+    </update>
+
+    <insert id="addGoods">
+        INSERT INTO protectiongoods
+        (goodsname,chandi,shengyubaozhiqi,price,unit,goodsusage,state,picbase64,amount)
+        VALUE
+        (#{goodsname},#{chandi},#{shengyubaozhiqi},#{price},#{unit},#{goodsusage},#{state},#{picbase64},#{amount})
+    </insert>
+
+    <update id="editGoods">
+        UPDATE protectiongoods SET price = #{price} ,
+        unit = #{unit} , picbase64 = #{picbase64} WHERE id = #{id}
+    </update>
+
+    <select id="getUpdateGoods" resultType="com.biyesheji.bishe.bean.ProtectionGoods">
+        SELECT * FROM protectiongoods WHERE id = #{id}
+    </select>
+
+    <delete id="deleteGoods">
+        DELETE FROM protectiongoods WHERE id = #{id}
+    </delete>
+
+    <select id="wxgoods" resultType="com.biyesheji.bishe.bean.ProtectionGoods">
+        SELECT * FROM protectiongoods
+        WHERE state = 1
+    </select>
+
+    <select id="wxallgoods" resultType="com.biyesheji.bishe.bean.ProtectionGoods">
+        SELECT * FROM protectiongoods
+    </select>
+
+</mapper>

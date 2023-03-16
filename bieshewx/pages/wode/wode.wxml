@@ -1,0 +1,44 @@
+<view class="main">
+    <view class="header">
+        <image src="{{userInfo.avatarUrl}}" class="thumb"></image>
+        <text class="nickname" wx:if="{{userInfo}}">{{userInfo.nickName}}</text>
+        <text class="nickname" wx:else bindtap="login">登录</text>
+        <text class="about" bindtap="logout" wx:if="{{userInfo}}">退出登录</text>
+    </view>
+    <view class="address-box">
+        <view class="address-manage">
+            <navigator url="/pages/address/address">地址管理</navigator>
+        </view>
+        <view wx:if="{{hasAddress}}" class="address-list">
+            <view>{{address.name}}</view>
+            <view>{{address.phone}}</view>
+            <view>{{address.detail}}</view>
+        </view>
+    </view>
+    <view class="orders-box">
+        <view class="orders">我的订单</view>
+        <view class="orders-list" wx:for="{{orders}}" wx:key="index">
+            <view class="orders-number">订单编号：{{item.number}}</view>
+            <view class="orders-detail">
+                <image src="{{item.thumb}}"></image>
+                <view class="">{{item.name}}</view>
+                <view class="">{{item.count}}</view>
+                <text class="orders-status">{{item.status}}</text>
+            </view>
+            <view class="orders-footer">
+                <text>实付：￥{{item.money}}</text>
+                <button size="mini" class="orders-btn" bindtap="payOrders">付款</button>
+            </view>
+        </view>
+    </view>
+    <view class="orders-box">
+        <view class="orders"><navigator url="/pages/dakarecord/dakarecord">打卡记录</navigator></view>
+    </view>
+    <view class="orders-box">
+        <view class="orders"><navigator url="/pages/churushenpi/churushenpi">出入审批</navigator></view>
+    </view>
+    <view class="orders-box">
+        <view class="orders"><navigator url="/pages/recentlyerweima/recentlyerweima">我的健康码</navigator>
+        </view>
+    </view>
+</view>

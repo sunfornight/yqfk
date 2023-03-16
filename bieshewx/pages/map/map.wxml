@@ -1,0 +1,21 @@
+
+
+
+<!-- <view>111{{hospitallist}}</view> -->
+
+  <!-- <text>序号：{{index+1}}，</text>
+  <text selectable></text> -->
+  <!-- <text selectable>地址：{{item.address}}</text>
+  <text selectable>联系电话：{{item.telephone}}</text>
+  <text selectable>纬度：{{item.latitude}}</text>
+  <text selectable>经度：{{item.longitude}}</text>
+  <text selectable>距离：{{item.location.distance}}</text> -->
+  <van-notice-bar scrollable text="做人厚道，戴好口罩。为国为家，不聚最佳。" />
+  
+<van-cell-group inset wx:for="{{hospitallist}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+  <van-cell title="核酸检测点{{index+1}}：" value="{{item.title}}"  icon="location-o" is-link
+  link-type="navigateTo"
+  url="/pages/mapdetail/mapdetail?name={{item.title}}&address={{item.address}}&telephone={{item.telephone}}&id={{item.id}}&latitude={{item.latitude}}&longitude={{item.longitude}}"/>
+</van-cell-group>
+
+

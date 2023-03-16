@@ -1,0 +1,133 @@
+<!-- 头部 -->
+<view class="header">
+  <view class="container hdcon">
+    <navigator open-type="switchTab" url="/pages/index/index">
+      <image mode="heightFix" src="/images/daikouzhao.png"></image>
+    </navigator>
+    <view class="kefu">
+      <button class="btn" open-type="contact" ></button>
+      <image  mode="heightFix" src="/images/jiayou.png"></image>
+    </view>
+  </view>
+</view>
+
+<van-notice-bar
+  scrollable="{{ true }}"
+  background= "#ffee6f"
+  text="抗击疫情，共克时艰。    万众一心，坚决打赢疫情防控狙击战。     少出门，少聚集，勤洗手，勤通风。"
+/>
+
+<!-- 渐变色 -->
+<view class="jianbianse">
+  <!--轮播图  -->
+  <view class="banner">
+    <swiper 	indicator-dots 	indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#aed0ee" circular autoplay interval="3000"  >
+      <swiper-item wx:for="{{lunbotuList}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+        <image src="{{item.picbase64}}"></image>
+        <view>{{item.picname}}</view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+
+
+  <!-- 功能栏 -->
+  <scroll-view class="major" scroll-x>
+      <navigator class="box" url="../map/map">
+        <image class="pic" src="/images/daohang/hesuandian.png"></image>
+        <view class="txt">附近核酸点</view>
+      </navigator>
+      <navigator class="box"  bindtap="switchtab">
+        <image class="pic" src="/images/daohang/daka.png"></image>
+        <view class="txt">健康打卡</view>
+      </navigator>
+      <navigator class="box" url="/pages/dakarecord/dakarecord">
+        <image class="pic" src="/images/daohang/dakajilu.png"></image>
+        <view class="txt">打卡记录</view>
+      </navigator>
+      <navigator class="box" url="/pages/churushenpi/churushenpi">
+        <image class="pic" src="/images/daohang/churushenpi.png"></image>
+        <view class="txt">出入审批</view>
+      </navigator>
+      <navigator class="box" url="/pages/recentlyerweima/recentlyerweima">
+        <image class="pic" src="/images/daohang/erweima.png"></image>
+        <view class="txt">近期健康码</view>
+      </navigator>
+  </scroll-view>
+
+
+    <view class="newest">
+        <view class="newest-title"><text>防护商品</text></view>
+        <view class="newest-box">
+            <view class="newest-list"  wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+                <navigator url="../shangpindetail/shangpindetail?goodsid={{item.goodsid}}&goodsimage={{item.picbase64}}&goodsname={{item.goodsname}}&goodschandi={{item.chandi}}&shengyubaozhiqi={{item.shengyubaozhiqi}}&goodsprice={{item.price}}&goodsstate={{item.state}}&goodsunit={{item.unit}}&goodsamount={{item.amount}}&goodsusage={{item.goodsusage}}">
+                    <image src="{{item.picbase64}}"></image>
+                    <view class="newest-text"><text>{{item.goodsname}}</text></view>
+                    <view class="newest-text"><text>{{item.price}}{{item.unit}}</text></view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<!-- 推送 -->
+<view class="dynamic">
+  <view class="container">
+    <view class="pubTitle">
+      <view class="txt">防疫讯息</view>
+      <navigator class="more" bindtap="open1">更多</navigator>
+    </view>
+    <view class="dyMain" wx:for="{{tuisongList}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+    <navigator url="../tuisong/tuisong?tuisongtitle={{item.tuisongtitle}}&tuisongauthor={{item.tuisongauthor}}&tuisongdate={{item.tuisongdate}}&tuisongintroduction={{item.tuisongintroduction}}&tuisongarticle={{item.tuisongarticle}}&picbase64={{item.picbase64}}" class="dyItem">
+        <view class="pic">
+          <image src="{{item.picbase64}}"></image>
+        </view>
+        <view class="txt">
+          <view class="title">
+            {{item.tuisongtitle}}
+          </view>
+          <view class="info">
+            <text>作者：</text>{{item.tuisongauthor}}<text space="ensp">  -  </text><text>时间：</text>{{item.tuisongdate}}
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+
+<!-- 所有推送dialog -->
+<view aria-role="dialog" aria-modal="true" aria-labelledby="js_dialog1_title" style="background:#ffee6f ;">
+    <view class="weui-mask weui-transition {{dialog1 ? 'weui-transition_show' : ''}}" bindtap="close"></view>
+    <view style="background:#ffee6f ;" class="weui-half-screen-dialog weui-transition {{dialog1 ? 'weui-transition_show' : ''}}">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <view aria-role="button" class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <strong class="weui-half-screen-dialog__title" id="js_dialog1_title">全部讯息</strong>
+            </view>
+        </view>
+        <scroll-view scroll-y="true" class="weui-half-screen-dialog__bd" style="width: 130%;margin-left: -72rpx; height: auto;">
+          <view class="dynamic" style="width: 110%;">
+            <view class="container">
+              <view class="dyMain" wx:for="{{alltuisongList}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+              <navigator url="../tuisong/tuisong?tuisongtitle={{item.tuisongtitle}}&tuisongauthor={{item.tuisongauthor}}&tuisongdate={{item.tuisongdate}}&tuisongintroduction={{item.tuisongintroduction}}&tuisongarticle={{item.tuisongarticle}}&picbase64={{item.picbase64}}" class="dyItem">
+                  <view class="pic">
+                    <image src="{{item.picbase64}}"></image>
+                  </view>
+                  <view class="txt">
+                    <view class="title">
+                      {{item.tuisongtitle}}
+                    </view>
+                    <view class="info">
+                      <text>作者：</text>{{item.tuisongauthor}}<text space="ensp">  -  </text><text>时间：</text>{{item.tuisongdate}}
+                    </view>
+                  </view>
+                </navigator>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+    </view>
+</view>

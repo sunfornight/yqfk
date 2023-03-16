@@ -1,0 +1,32 @@
+<HdView></HdView><view class="main">
+    <view class="goods-box">
+
+          <text>出入小区申请</text>
+          <navigator url="/pages/churutest/churutest">
+            <van-button square type="primary" size="large">填写申请</van-button>
+          </navigator>
+
+    </view>
+    <view class="goods-tab-box">
+        <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">待审核</view>
+        <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">已同意</view>
+        <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">已拒绝</view>
+        <view class="goods-content">
+            <view wx:if="{{curIndex === 0}}">
+                <van-cell-group wx:for="{{mks1}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+                  <van-cell title="序号:{{item.id}}" value="{{item.name}}" label="{{item.note}}" border="{{ false }}" />
+                </van-cell-group>
+            </view>
+            <view wx:if="{{curIndex === 1}}">
+              <van-cell-group wx:for="{{mks2}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+                  <van-cell title="序号:{{item.id}}" value="{{item.name}}" label="{{item.note}}" border="{{ false }}" />
+                </van-cell-group>
+            </view>
+            <view wx:if="{{curIndex === 2}}">
+              <van-cell-group wx:for="{{mks3}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+                  <van-cell title="序号:{{item.id}}" value="{{item.name}}" label="备注信息{{item.note}}" border="{{ false }}" />
+                </van-cell-group>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.TuisongDao">
+    <select id="getAllTuisong" resultType="com.biyesheji.bishe.bean.Tuisong">
+        SELECT * FROM tuisong
+        <if test="tuisongauthor !=null">
+            WHERE tuisongauthor like #{tuisongauthor}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getTuisongCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM tuisong
+        <if test="tuisongauthor !=null">
+            WHERE tuisongauthor like #{tuisongauthor}
+        </if>
+    </select>
+
+    <update id="updateState">
+       UPDATE tuisong SET state = #{state} WHERE id = #{id}
+    </update>
+
+    <insert id="addTuisong">
+        INSERT INTO tuisong
+        (tuisongtitle,tuisongauthor,tuisongintroduction,tuisongarticle,tuisongdate,state,picbase64)
+        VALUE
+        (#{tuisongtitle},#{tuisongauthor},#{tuisongintroduction},#{tuisongarticle},#{tuisongdate},#{state},#{picbase64})
+    </insert>
+
+    <update id="editTuisong">
+        UPDATE tuisong SET tuisongtitle = #{tuisongtitle} , tuisongauthor = #{tuisongauthor} ,
+        tuisongintroduction = #{tuisongintroduction} , tuisongarticle = #{tuisongarticle} , picbase64 = #{picbase64} WHERE id = #{id}
+    </update>
+
+    <select id="getUpdateTuisong" resultType="com.biyesheji.bishe.bean.Tuisong">
+        SELECT * FROM tuisong WHERE id = #{id}
+    </select>
+
+    <delete id="deleteTuisong">
+        DELETE FROM tuisong WHERE id = #{id}
+    </delete>
+
+    <select id="alltuisong" resultType="com.biyesheji.bishe.bean.Tuisong">
+        SELECT * FROM tuisong
+    </select>
+
+    <select id="getWxTuisong" resultType="com.biyesheji.bishe.bean.Tuisong">
+        SELECT * FROM tuisong
+        WHERE state = 1
+    </select>
+
+    <select id="getWxAllTuisong" resultType="com.biyesheji.bishe.bean.Tuisong">
+        SELECT * FROM tuisong
+    </select>
+</mapper>

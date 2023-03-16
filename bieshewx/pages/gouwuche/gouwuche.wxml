@@ -1,0 +1,9 @@
+<view class="container">
+  <block wx:for="{{cartList}}" wx:key="item">
+    <view class="container-row container-goods">
+      <view class="container-row left">
+        <text catchtap="selectChange" data-index="{{index}}" class="{{item.checked?'selected':'unselected'}}">√</text>
+      </view>
+    </view>
+  </block>
+</view>

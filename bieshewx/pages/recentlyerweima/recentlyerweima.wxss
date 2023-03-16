@@ -1,0 +1,29 @@
+/* pages/test/test.wxss */
+@import "/icon.wxss";
+@import "/main.wxss";
+
+.ratetext{
+  margin-top: 30rpx;
+  width: 100%;
+  text-align: center;
+}
+.title{
+  display: block;
+  font-size: 40rpx;
+}
+.rate{
+  margin-top: 10rpx;
+  display: block;
+  font-size: 50rpx;
+}
+
+.Scancode {
+  
+  font-size: 39rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biyesheji.bishe.dao.ClientDao">
+    <select id="getAllClient" resultType="com.biyesheji.bishe.bean.Client">
+        SELECT * FROM client
+        <if test="clientname !=null">
+            WHERE clientname like #{clientname}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+    <select id="getClientCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM client
+        <if test="clientname !=null">
+            WHERE clientname like #{clientname}
+        </if>
+    </select>
+    <update id="updateVisitState">
+       UPDATE corporation SET isvisit = #{state} WHERE corporationid = #{id}
+    </update>
+    <update id="updateBiddingState">
+       UPDATE corporation SET corporationbidding = #{state} WHERE corporationid = #{id}
+    </update>
+    <insert id="addClient">
+        INSERT INTO client
+        (clientname,clientrole,clienttelephone,corporationname,clientinterview)
+        VALUE
+        (#{clientname},#{clientrole},#{clienttelephone},#{corporationname},#{clientinterview})
+    </insert>
+    <select id="getUpdateClient" resultType="com.biyesheji.bishe.bean.Client">
+        SELECT * FROM client WHERE clientid = #{id}
+    </select>
+    <delete id="deleteClient">
+        DELETE FROM client WHERE clientid = #{clientid}
+    </delete>
+    <update id="editClient">
+        UPDATE client SET
+        clientname = #{clientname} , clientrole = #{clientrole} ,
+        clienttelephone = #{clienttelephone} ,corporationname = #{corporationname} ,
+        clientinterview = #{clientinterview}
+        WHERE clientid = #{clientid}
+    </update>
+
+    <select id="clientGetAllCorporationName" resultType="java.lang.String">
+        SELECT distinct corporationname  FROM corporation
+    </select>
+    <update id="updateClientLevel">
+       UPDATE client SET clientlevel = #{clientlevel} WHERE clientid = #{clientid}
+    </update>
+
+    <select id="getClientLevelCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM client
+        <if test="clientlevelInfo !=null">
+            WHERE clientlevel = #{clientlevelInfo}
+        </if>
+
+    </select>
+
+    <select id="getClientLevel" resultType="com.biyesheji.bishe.bean.Client">
+        SELECT * FROM client
+
+        <if test="clientlevelInfo !=null">
+            WHERE clientlevel = #{clientlevelInfo}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+    <update id="updateDealState">
+       UPDATE client SET isdeal = #{state} WHERE clientid = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,12 @@
+<view class="wrap" wx:if="{{userInfo}}">
+  <view>
+    <image class="face" src="{{userInfo.avatarUrl}}" bindtap="welcome"></image>
+    <view class="nickname">{{userInfo.nickName}}</view>
+    <text>欢迎来到疫情防控小程序</text>
+  </view>
+</view>
+
+
+<view  class="padding flex flex-direction" wx:else>
+  <button class="cu-btn bg-red margin-tb-sm lg"  bindtap="login">登录</button>
+</view>

@@ -1,0 +1,23 @@
+@import "/icon.wxss";
+@import "/main.wxss";
+.face{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.nickname{
+  margin-top: 30rpx;
+}
+
+.wrap{
+  text-align: center;
+  margin-top: 30%;
+}
+page{
+  background:linear-gradient(135deg,#ff75c3,#ffa647,#ffe83f,#9fff5b,#70e2ff,#cd93ff) ;
+}
+text{
+  font-size: 32rpx;
+  color: #cd93ff;
+}

@@ -1,0 +1,4 @@
+/* pages/test/test.wxss */
+.van-nav-bar{
+  margin-top: -11% !important;
+}

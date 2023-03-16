@@ -1,0 +1,10 @@
+<van-notice-bar
+  scrollable="{{ true }}"
+  background= "#ffee6f"
+  text="抗击疫情，共克时艰。    万众一心，坚决打赢疫情防控狙击战。     少出门，少聚集，勤洗手，勤通风。"
+/>
+<view wx:for="{{record}}" wx:for-item="item" wx:for-index="index"  wx:key="index">
+  <van-cell-group inset>
+    <van-cell title="{{item.date}}" value="{{item.rate==1?'未审核':'已审核'}}" label="{{item.name}}" border="{{ true }}"  is-link link-type="navigateTo" url="/pages/dakarate/dakarate?id={{item.id}}"/>
+  </van-cell-group>
+</view>

@@ -1,0 +1,22 @@
+
+
+<view class="solids-bottom padding-xs flex align-center">
+    <view class="padding"></view>
+    <view class="flex-sub text-center">
+      <view class="solid-bottom text-xl padding">
+        <text class="text-black text-bold">健康码</text>
+      </view>
+    </view>
+</view>
+
+<view >
+  <canvas style="width: 400px;height:400px;" canvas-id="myQrcode"></canvas>
+</view>
+
+<view class="ratetext">
+  <text class="title">审核结果:</text>
+  <text class="rate">{{rate}}</text>
+</view>
+
+
+<button class='Scancode' bindtap='back'>确定</button>
